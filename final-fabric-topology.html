@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Fabric Topology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #080c14;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .title {
+    color: #00e5ff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    text-shadow: 0 0 20px rgba(0,229,255,0.6);
+  }
+
+  .subtitle {
+    color: #4a6fa5;
+    font-size: 0.75rem;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.15em;
+    margin-bottom: 28px;
+  }
+
+  svg {
+    width: 900px;
+    height: 520px;
+    filter: drop-shadow(0 0 40px rgba(0,229,255,0.08));
+  }
+
+  .label-main { font-family: 'Share Tech Mono', monospace; font-size: 12.5px; fill: #e2e8f0; text-anchor: middle; }
+  .label-sub  { font-family: 'Share Tech Mono', monospace; font-size: 8.5px;  fill: #64748b; text-anchor: middle; }
+  .label-ip   { font-family: 'Share Tech Mono', monospace; font-size: 8.5px;  fill: #22c55e; text-anchor: middle; }
+  .link-label { font-family: 'Share Tech Mono', monospace; font-size: 8px;    fill: #334155; }
+  .layer-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .legend-text { font-family: 'Share Tech Mono', monospace; font-size: 9px; fill: #64748b; }
+</style>
+</head>
+<body>
+
+<div class="title">Final Fabric Topology</div>
+<div class="subtitle">3 spine · 2 leaf · 6 hosts · full-mesh core</div>
+
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#0d1a2e" stroke-width="1"/>
+    </pattern>
+
+    <filter id="glowBlue"   x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowPurple" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowGreen"  x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <path id="p-s1-l1" d="M 182 156 L 212 232"/>
+    <path id="p-s1-l2" d="M 198 156 L 572 232"/>
+    <path id="p-s2-l1" d="M 442 156 L 228 232"/> <path id="p-s2-l2" d="M 458 156 L 572 232"/> <path id="p-s3-l1" d="M 702 156 L 232 232"/>
+    <path id="p-s3-l2" d="M 718 156 L 588 232"/>
+
+    <path id="p-h1-l1" d="M 100 360 L 212 288"/>
+    <path id="p-h2-l1" d="M 220 360 L 220 288"/>
+    <path id="p-h3-l1" d="M 340 360 L 228 288"/>
+    <path id="p-h4-l2" d="M 460 360 L 572 288"/>
+    <path id="p-h5-l2" d="M 580 360 L 580 288"/>
+    <path id="p-h6-l2" d="M 700 360 L 588 288"/>
+  </defs>
+
+  <rect width="900" height="520" fill="#080c14"/>
+  <rect width="900" height="520" fill="url(#grid)"/>
+
+  <rect x="30" y="100" width="840" height="88"  fill="rgba(0,229,255,0.018)"   rx="5"/>
+  <rect x="30" y="220" width="840" height="88"  fill="rgba(124,58,237,0.018)" rx="5"/>
+  <rect x="30" y="348" width="840" height="100" fill="rgba(34,197,94,0.018)"  rx="5"/>
+
+  <text x="862" y="148" class="layer-label" fill="#00e5ff"  opacity="0.75" text-anchor="end">Spine Layer</text>
+  <text x="862" y="268" class="layer-label" fill="#7c3aed"  opacity="0.75" text-anchor="end">Leaf Layer</text>
+  <text x="862" y="395" class="layer-label" fill="#22c55e"  opacity="0.75" text-anchor="end">Host Layer</text>
+
+  <line x1="182" y1="156" x2="212" y2="232" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6 3"/>
+  <line x1="198" y1="156" x2="572" y2="232" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6 3"/>
+  <line x1="442" y1="156" x2="228" y2="232" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6 3"/>
+  <line x1="458" y1="156" x2="572" y2="232" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6 3"/>
+  <line x1="702" y1="156" x2="232" y2="232" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6 3"/>
+  <line x1="718" y1="156" x2="588" y2="232" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6 3"/>
+
+  <text x="195"  y="193" class="link-label" fill="#00e5ff" opacity="0.45" transform="rotate(-12,195,193)">10Mbps</text>
+  <text x="338"  y="186" class="link-label" fill="#00e5ff" opacity="0.45" transform="rotate(24,338,186)">10Mbps</text>
+  <text x="658"  y="188" class="link-label" fill="#00e5ff" opacity="0.45" transform="rotate(55,658,188)">10Mbps</text>
+
+  <line x1="100" y1="360" x2="212" y2="288" stroke="#22c55e" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="220" y1="360" x2="220" y2="288" stroke="#22c55e" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="340" y1="360" x2="228" y2="288" stroke="#22c55e" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="460" y1="360" x2="572" y2="288" stroke="#22c55e" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="580" y1="360" x2="580" y2="288" stroke="#22c55e" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="700" y1="360" x2="588" y2="288" stroke="#22c55e" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <g filter="url(#glowBlue)">
+    <rect x="130" y="100" width="120" height="56" rx="8" fill="#0a1628" stroke="#00e5ff" stroke-width="1.5"/>
+    <text x="190" y="139" class="label-main">Spine 1</text>
+    <text x="190" y="151" class="label-sub">s1 · dpid:…0001</text>
+  </g>
+
+  <g filter="url(#glowBlue)">
+    <rect x="390" y="100" width="120" height="56" rx="8" fill="#0a1628" stroke="#00e5ff" stroke-width="1.5"/>
+    <text x="450" y="139" class="label-main">Spine 2</text>
+    <text x="450" y="151" class="label-sub">s2 · dpid:…0002</text>
+  </g>
+
+  <g filter="url(#glowBlue)">
+    <rect x="650" y="100" width="120" height="56" rx="8" fill="#0a1628" stroke="#00e5ff" stroke-width="1.5"/>
+    <text x="710" y="139" class="label-main">Spine 3</text>
+    <text x="710" y="151" class="label-sub">s3 · dpid:…0003</text>
+  </g>
+
+  <g filter="url(#glowPurple)">
+    <rect x="160" y="232" width="120" height="56" rx="8" fill="#0a1628" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="220" y="271" class="label-main">Leaf 1</text>
+    <text x="220" y="283" class="label-sub">s4 · dpid:…0004</text>
+  </g>
+
+  <g filter="url(#glowPurple)">
+    <rect x="520" y="232" width="120" height="56" rx="8" fill="#0a1628" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="580" y="271" class="label-main">Leaf 2</text>
+    <text x="580" y="283" class="label-sub">s5 · dpid:…0005</text>
+  </g>
+
+  <g filter="url(#glowGreen)">
+    <rect x="50"  y="360" width="100" height="52" rx="6" fill="#0a1628" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="100" y="378" class="label-main">h1</text>
+    <text x="100" y="389" class="label-ip">10.0.0.1/24</text>
+    <text x="100" y="400" class="label-sub">:00:01</text>
+  </g>
+
+  <g filter="url(#glowGreen)">
+    <rect x="170" y="360" width="100" height="52" rx="6" fill="#0a1628" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="220" y="378" class="label-main">h2</text>
+    <text x="220" y="389" class="label-ip">10.0.0.2/24</text>
+    <text x="220" y="400" class="label-sub">:00:02</text>
+  </g>
+
+  <g filter="url(#glowGreen)">
+    <rect x="290" y="360" width="100" height="52" rx="6" fill="#0a1628" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="340" y="378" class="label-main">h3</text>
+    <text x="340" y="389" class="label-ip">10.0.0.3/24</text>
+    <text x="340" y="400" class="label-sub">:00:03</text>
+  </g>
+
+  <g filter="url(#glowGreen)">
+    <rect x="410" y="360" width="100" height="52" rx="6" fill="#0a1628" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="460" y="378" class="label-main">h4</text>
+    <text x="460" y="389" class="label-ip">10.0.0.4/24</text>
+    <text x="460" y="400" class="label-sub">:00:04</text>
+  </g>
+
+  <g filter="url(#glowGreen)">
+    <rect x="530" y="360" width="100" height="52" rx="6" fill="#0a1628" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="580" y="378" class="label-main">h5</text>
+    <text x="580" y="389" class="label-ip">10.0.0.5/24</text>
+    <text x="580" y="400" class="label-sub">:00:05</text>
+  </g>
+
+  <g filter="url(#glowGreen)">
+    <rect x="650" y="360" width="100" height="52" rx="6" fill="#0a1628" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="700" y="378" class="label-main">h6</text>
+    <text x="700" y="389" class="label-ip">10.0.0.6/24</text>
+    <text x="700" y="400" class="label-sub">:00:06</text>
+  </g>
+
+  <line x1="52"  y1="430" x2="388" y2="430" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+  <text x="220"  y="444" class="legend-text" text-anchor="middle" fill="#22c55e" opacity="0.35">Rack 1</text>
+  <line x1="412" y1="430" x2="748" y2="430" stroke="#22c55e" stroke-width="0.8" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+  <text x="580"  y="444" class="legend-text" text-anchor="middle" fill="#22c55e" opacity="0.35">Rack 2</text>
+
+  <circle r="3" fill="#00e5ff" opacity="0.9">
+    <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s"><mpath href="#p-s1-l1"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#00e5ff" opacity="0.9">
+    <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.5s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#p-s1-l2"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#00e5ff" opacity="0.9">
+    <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.9s"><mpath href="#p-s2-l1"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#00e5ff" opacity="0.9">
+    <animateMotion dur="2.3s" repeatCount="indefinite" begin="1.3s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#p-s2-l2"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#00e5ff" opacity="0.9">
+    <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.3s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#p-s3-l1"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#00e5ff" opacity="0.9">
+    <animateMotion dur="2.1s" repeatCount="indefinite" begin="1.7s"><mpath href="#p-s3-l2"/></animateMotion>
+  </circle>
+
+  <circle r="2.5" fill="#22c55e" opacity="0.9">
+    <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.1s"><mpath href="#p-h1-l1"/></animateMotion>
+  </circle>
+  <circle r="2.5" fill="#22c55e" opacity="0.9">
+    <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.6s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#p-h2-l1"/></animateMotion>
+  </circle>
+  <circle r="2.5" fill="#22c55e" opacity="0.9">
+    <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.1s"><mpath href="#p-h3-l1"/></animateMotion>
+  </circle>
+  <circle r="2.5" fill="#22c55e" opacity="0.9">
+    <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.3s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#p-h4-l2"/></animateMotion>
+  </circle>
+  <circle r="2.5" fill="#22c55e" opacity="0.9">
+    <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.8s"><mpath href="#p-h5-l2"/></animateMotion>
+  </circle>
+  <circle r="2.5" fill="#22c55e" opacity="0.9">
+    <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#p-h6-l2"/></animateMotion>
+  </circle>
+
+  <g transform="translate(34, 470)">
+    <line x1="0" y1="8"  x2="22" y2="8"  stroke="#00e5ff" stroke-width="1.5" stroke-dasharray="5 2" opacity="0.6"/>
+    <text x="26" y="12" class="legend-text">Spine–Leaf · 10 Mbps</text>
+    <line x1="0" y1="22" x2="22" y2="22" stroke="#22c55e" stroke-width="1.5" opacity="0.6"/>
+    <text x="26" y="26" class="legend-text">Host–Leaf · 100 Mbps</text>
+  </g>
+
+  <text x="866" y="480" class="legend-text" text-anchor="end">3 Spine · 2 Leaf · 6 Hosts</text>
+  <text x="866" y="492" class="legend-text" text-anchor="end">Full-Mesh Core · OpenFlow</text>
+</svg>
+
+</body>
+</html>
