@@ -5,8 +5,9 @@
 ```bash
 cd ~/sdn-work
 source ryu_env/bin/activate
-ryu-manager leaf_spine_controller.py --observe-links
+ ryu-manager --wsapi-host 0.0.0.0 leaf_spine_controller.py ryu.app.ofctl_rest
 ```
+
 
 ### Run MiniNet Ubuntu terminal 2
 ```bash
