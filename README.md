@@ -1,3 +1,6 @@
+## Spine-leaf Architecture
+![PHOTO-2026-02-24-18-08-51](https://github.com/user-attachments/assets/402c0c4b-2bd9-426b-913b-09ea9cbb658d)
+
 ### Start Ryu Controller Ubuntu terminal 1
 ```bash
 cd ~/sdn-work
