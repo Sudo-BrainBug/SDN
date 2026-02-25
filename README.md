@@ -13,7 +13,7 @@ sudo mn --custom ~/sdn-work/LeafSpine.py \
         --switch ovsk,protocols=OpenFlow13 \
         --controller remote,ip=127.0.0.1,port=6633
 ```
-### Check Network Works Device Terminal
+### Check Network Works (Run this command in terminal)
 ```bash
 curl http://localhost:8080/stats/switches
 ```
