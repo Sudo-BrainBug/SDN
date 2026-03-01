@@ -21,3 +21,6 @@ sudo mn --custom LeafSpine.py --topo leafspine --mac --arp --controller remote -
 curl http://localhost:8080/stats/switches
 ```
 #### It should show : [1, 2, 3, 4, 5]
+
+h4 iperf -s -u &
+h1 iperf -c 10.0.0.4 -u -b 8M -t 50
