@@ -5,17 +5,13 @@
 ```bash
 cd ~/sdn-work
 source ryu_env/bin/activate
- ryu-manager --wsapi-host 0.0.0.0 leaf_spine_controller.py ryu.app.ofctl_rest
+ ryu-manager ryu.app.simple_switch_stp_13 ryu.app.ofctl_rest
 ```
 
 
 ### Run MiniNet Ubuntu terminal 2
 ```bash
-sudo mn --custom ~/sdn-work/LeafSpine.py \
-        --topo leafspine \
-        --mac \
-        --switch ovsk,protocols=OpenFlow13 \
-        --controller remote,ip=127.0.0.1,port=6633
+sudo mn --custom LeafSpine.py --topo leafspine --mac --arp --controller remote --switch ovs,protocols=OpenFlow13
 ```
 ### Check Network Works (Run this command in terminal)
 ```bash
