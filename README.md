@@ -8,13 +8,13 @@
 ```bash
 cd ~/sdn-work
 source ryu_env/bin/activate
- ryu-manager ryu.app.simple_switch_stp_13 ryu.app.ofctl_rest
+ryu-manager sdn_lb_controller.py --ofp-tcp-listen-port 6633
 ```
 
 
 ### Run MiniNet Ubuntu terminal 2
 ```bash
-sudo mn --custom LeafSpine.py --topo leafspine --mac --arp --controller remote --switch ovs,protocols=OpenFlow13
+sudo mn --custom leaf_spine_topo.py --topo leafspine --controller=remote,ip=127.0.0.1,port=6633 --link tc
 ```
 ### Check Network Works (Run this command in terminal)
 ```bash
